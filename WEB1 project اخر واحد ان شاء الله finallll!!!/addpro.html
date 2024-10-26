@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="StyleSheet.css">
+    <title>QuickTrade</title>
+    
+</head>
+<body>
+
+<header>
+    <div id="sidebar"><img id="logo" src="images/logo.png" alt="quicktrada" width="150"><h1>QUICKTRADA</h1>
+        <a href="cart.html"><img src="images/cart.png" alt="cart icon">cart</a>
+        <a href="Saller.html"><img src="images/seller.png" alt="seller icon">seller</a>
+        <a href="customer.html"><img src="images/customer.png" alt="customer icon">customer</a>
+        <a href="Clothing.html"><img src="images/clothes.png" alt="clothes icon">clothes</a>
+		<a href="Shoes.html"><img src="images/choose.png" alt="choes icon">Shoes</a>
+		<a href="Watches.html"><img src="images/watch.png" alt="watch icon">watches</a>
+    </div>
+</header>
+
+<div class="breadcrumbs">
+    <span>&gt;</span> <a href="home.html">Home</a> <span>&gt;</span> <a href="Saller.html">Seller</a> <span>&gt;</span> <a href="addpro.html">Add product</a>
+</div>
+
+<center>
+    <form action="#" method="POST" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>
+                    <div class="image-frame">
+							<img src="images/add.png" alt="add image" id="addImage" >
+						</div>
+							<div class="upload-section">
+								<label>Add Product photo:<input type="file" name="photo" width=40%></label>
+                </td>
+            </tr>
+        </table>
+
+        <h2>Product information:</h2>
+        <table id="protable">
+            <tr>
+                <td><label for="name">Name:</label></td>
+                <td><input type="text" id="name" name="name" ></td>
+            </tr>
+            <tr>
+                <td><label for="price">Price:</label></td>
+                <td><input type="text" id="price" name="price" ></td>
+            </tr>
+            <tr>
+                <td><label for="quantity">Quantity:</label></td>
+                <td><input type="text" id="quantity" name="quantity" ></td>
+            </tr>
+            <tr>
+                <td><label for="category">Category:</label></td>
+                <td>
+                    <select id="category" name="category">
+                        <option value="category1">Clothes</option>
+                        <option value="category2">shoes</option>
+                        <option value="category3">Watches</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="description">Description:</label></td>
+                <td><textarea id="description" name="description" placeholder="Description"></textarea></td>
+            </tr>
+        </table>
+        <input id="sub" type="submit" value="Submit" style="margin-bottom: 30px;">
+    </form>
+</center>
+
+<footer>
+	<img id="last" src="images/contact.png" alt="contact">
+	<h2>Contact Us</h2>
+	<div>
+		<a href="#"><img src="images/email.png" alt="email icon"></a>
+		<a href="#"><img src="images/insta.png" alt="insta icon"></a>
+		<a href="#"><img src="images/snap.png" alt="snap icon"></a>
+	</div>
+	<h4>We're here to help!<br>Reach out to our customer support team for any inquiries,<br> and we'll ensure a smooth and satisfying shopping experience.</h4>
+    <p>&copy; 2024 QuickTrade. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

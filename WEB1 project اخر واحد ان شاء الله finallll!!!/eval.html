@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="StyleSheet.css">
+   
+    <title>Product Evaluation</title>
+   
+    
+</head>
+<body>
+   
+        <header>
+            <div id="sidebar"><img id="logo" src="images/logo.png" alt="quicktrada" width="150"><h1>QUICKTRADA</h1>
+                <a href="cart.html"><img src="images/cart.png" alt="cart icon">cart</a>
+                <a href="#"><img src="images/seller.png" alt="seller icon">seller</a>
+                <a href="customer.html"><img src="images/customer.png" alt="customer icon">customer</a>
+                <a href="#"><img src="images/clothes.png" alt="clothes icon">clothes</a>
+                <a href="#"><img src="images/choose.png" alt="choes icon">choes</a>
+                <a href="#"><img src="images/watch.png" alt="watch icon">watches</a>
+            </div>
+            
+        </header>
+
+        <main>
+            <div class="breadcrumbs">
+                <a href="home.html">Home</a> <span>&gt;</span>  
+                
+                <a href="customer.html">customer</a> <span>&gt;</span> 
+                <a href="eval.html">order evaluation-form</a> <span>&gt;</span>  
+            </div>
+			<h1>Evaluation page<h1> 
+			
+			
+            <form id="evaluation-form" action="form.pho" method="POST" enctype="multipart/form-data">
+               
+                <select id="order-select" required>
+                    <option value="">Select an order</option>
+                    <option value="123456">Order #123456</option>
+                    <option value="654321">Order #654321</option>
+                </select>
+                <br>
+
+                
+                <select id="product-select" required>
+                    <option  value="">Select a product</option>
+                    <option value="product1">Product 1</option>
+                    <option value="product2">Product 2</option>
+                </select>
+                <br>
+                
+               
+                
+                <textarea id="feedback" rows="6" required>write your feedback....</textarea>
+				<br>
+				<div id="rate" style="display: block;">
+				
+				
+				<input type="range" id="rating1" name="rating"  value="7" maxlength="5">
+				</div>
+				<br>
+                <button id="send" type="submit">send</button>
+            </form>
+			
+			
+        </main>
+
+        <footer>
+            <img id="last" src="images/contact.png" alt="contact">
+            <h2>contact us </h2>
+            <div>
+                <a href ="#"> <img src="images/email.png" alt="email icon"> </a>
+                <a href ="#"> <img src="images/insta.png" alt="insat icon">  </a>
+                <a href ="#"> <img src="images/snap.png" alt="snap icon"> </a>
+            </div>
+            <h4>Here's a short customer communication phrase for your site:<br> 
+        We're here to help!<br> Reach out to our customer support team for any inquiries, <br>and we'll ensure a smooth and satisfying shopping experience.</h4>
+        
+            <p>&copy; 2024 QuickTrade. All Rights Reserved.</p>
+        </footer>
+    
+</body>
+</html>
