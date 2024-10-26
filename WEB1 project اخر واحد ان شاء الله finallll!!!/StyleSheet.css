@@ -557,5 +557,183 @@ display: block;
 	  
 	  
   }
-  
+
+   .offer-section {
+            margin: 1em;
+            width: 80%;
+        }
+
+        /* Top buttons section */
+        .offer-buttons {
+            display: flex;
+			flex-direction: row;
+            align-content: flex-start;
+			justify-content: space-between;
+            margin-bottom: 0.75em;
+			display: inline-flex;
+			gap: 0.5em;
+        }
+		#selectBtn, #deleteBtn {
+    display: inline-block;
+    margin-right: 0.5em; /* Adds some spacing between the buttons */
+}
+
+        .offer-buttons button {
+            padding: 0.5em 0.75em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 0.2em;
+            cursor: pointer;
+        }
+
+        /* Offers list */
+        .offers-list {
+            background-color: #fff;
+            box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.1);
+            border: 0.05em solid #ccc;
+            border-radius: 0.4em;
+            padding: 0.75em;
+            max-height: 15em;
+            overflow-y: auto;
+            position: relative;
+			margin: auto;
+        }
+		
+		.offerList fieldset {
+			width: 85%;
+			margin: auto;
+            padding: 0.5em;
+            border: 0.025em solid #ccc;
+            display: flex-end;
+            justify-content: center;
+            gap: 20px;
+		}
+
+        .offer-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5em;
+            padding: 0.5em;
+            border: 0.05em solid #eee;
+            border-radius: 0.2em;
+        }
+
+        .offer-item img {
+            width: 50px;
+            height: 50px;
+            background-color: #ddd;
+            margin-right: 1em;
+        }
+
+        .offer-item label {
+            flex-grow: 1;
+			font-size:0.5em;
+        }
+		
+		.offer-item #title {
+			font-size:1em;
+		}
+
+        .offer-item input[type="checkbox"] {
+            margin-left: 1em;
+        }
+
+        /* Custom scrollbar */
+        .offers-list::-webkit-scrollbar {
+            width: 0.6em;
+        }
+
+        .offers-list::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 0.3em;
+        }
+
+        .offers-list::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+            border-radius: 0.3em;
+        }
+
+        /* Add Offer Section */
+		.addOfferContainer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 1em;
+            width: 80%;
+            margin: 0 auto;
+            border: 0.05em solid #ccc;
+            margin: auto;
+        }
+
+        .image-upload {
+            width: 7.5em;
+            height: 7.5em;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 0.05em solid #ddd;
+            margin-right: 1em;
+        }
+
+        .image-upload input[type="file"] {
+            display: none;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 0.5em;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-group label {
+            margin-right: 0.5em;
+            width: 7.5em;
+        }
+
+        .form-group input[type="text"], .form-group textarea {
+            width: 100%;
+            padding: 0.4em;
+            border: 0.05em solid #ccc;
+            border-radius: 0.35em;
+            resize: none;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1em;
+            width: 55%;
+        }
+
+        .buttons .add-offer {
+            padding: 0.5em 1em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 0.2em;
+            cursor: pointer;
+            margin-left: 0.5em;
+        }
+
+        .offer-section h2 {
+            text-align:left;
+            width: 100%;
+        }
+
+        h2{
+            margin: auto;
+            text-align:left;
+            width: 100%;
+            
+        }
+
+		
   
