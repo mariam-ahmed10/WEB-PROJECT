@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickTrade - Your Cart</title>
+    <link rel="stylesheet" href="StyleSheet.css">
+</head>
+<body>
+
+<header>
+    <div id="sidebar">
+        <img id="logo" src="images/logo.png" alt="quicktrada" width="150">
+        <h1>QUICKTRADA</h1>
+        <a href="cart.html"><img src="images/cart.png" alt="cart icon">cart</a>
+        <a href="saller.html"><img src="images/seller.png" alt="seller icon">seller</a>
+        <a href="customer.html"><img src="images/customer.png" alt="customer icon">customer</a>
+        <a href="Clothing.html"><img src="images/clothes.png" alt="clothes icon">clothes</a>
+        <a href="Shoes.html"><img src="images/choose.png" alt="shoes icon">Shoes</a>
+        <a href="Watches.html"><img src="images/watch.png" alt="watch icon">watches</a>
+    </div>
+</header>
+
+<main>
+    <div class="breadcrumbs">
+        <span>&gt;</span> <a href="home.html">Home</a> <span>&gt;</span> <a href="cart.html">Cart</a>   
+    </div>
+    
+    <div id="cart">
+        <h1>Your Cart</h1>
+        <div id="cart-items"></div> <!-- This is where we'll dynamically insert cart items -->
+
+        <div class="cart-actions">
+            <button id="clear-cart" aria-label="Clear cart" class="clear-cart">Clear Cart</button>
+            <button id="checkout" aria-label="Proceed to checkout" class="checkout">Check Out</button>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <img id="last" src="images/contact.png" alt="contact">
+    <h2>contact us</h2>
+    <div>
+        <a href="#"> <img src="images/email.png" alt="email icon"> </a>
+        <a href="#"> <img src="images/insta.png" alt="insta icon">  </a>
+        <a href="#"> <img src="images/snap.png" alt="snap icon"> </a>
+    </div>
+    <h4>We're here to help! Reach out to our customer support team for any inquiries, and we'll ensure a smooth and satisfying shopping experience.</h4>
+    <p>&copy; 2024 QuickTrade. All Rights Reserved.</p>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const cartItemsContainer = document.getElementById("cart-items");
+        const totalPriceContainer = document.getElementById("total-amount");
+        const clearCartButton = document.getElementById("clear-cart");
+        const checkoutButton = document.getElementById("checkout");
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Display cart items
+        function displayCart() {
+            cartItemsContainer.innerHTML = '';  // Clear previous cart items
+            let totalAmount = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+            } else {
+                cart.forEach((item, index) => {
+                    const cartItemDiv = document.createElement("div");
+                    cartItemDiv.classList.add("cart-item");
+                    cartItemDiv.innerHTML = `
+                        <div class="item-details">
+                            <img src="${item.imageSrc}" alt="${item.name}" width="100" height="100">
+                            <span>${item.name}</span><br>
+                            <p>A stylish product description.</p>
+                        </div>
+                        <div class="item-quantity">
+                            <div class="item-price">SAR ${item.price}</div>
+                            <button class="decrease-quantity" aria-label="Decrease quantity" data-index="${index}">-</button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="increase-quantity" aria-label="Increase quantity" data-index="${index}">+</button>
+                        </div>
+                        <img class="delete-item" src="images/delete.jpg" alt="delete" width="50" height="50" data-index="${index}">
+                    `;
+
+                    cartItemsContainer.appendChild(cartItemDiv);
+
+                    // Update the total price
+                    totalAmount += item.price * item.quantity;
+
+                    // Increase quantity
+                    cartItemDiv.querySelector(".increase-quantity").addEventListener("click", function() {
+                        item.quantity++;
+                        localStorage.setItem("cart", JSON.stringify(cart)); // Save updated cart
+                        displayCart(); // Re-render the cart
+                    });
+
+                    // Decrease quantity
+                    cartItemDiv.querySelector(".decrease-quantity").addEventListener("click", function() {
+                        if (item.quantity > 1) {
+                            item.quantity--;
+                            localStorage.setItem("cart", JSON.stringify(cart)); // Save updated cart
+                            displayCart(); // Re-render the cart
+                        }
+                    });
+
+                    // Delete item from cart
+                    cartItemDiv.querySelector(".delete-item").addEventListener("click", function() {
+                        cart.splice(index, 1); // Remove item from cart array
+                        localStorage.setItem("cart", JSON.stringify(cart)); // Update localStorage
+                        displayCart(); // Re-render the cart
+                    });
+                });
+            }
+
+            // Update the total price
+            totalPriceContainer.textContent = `SAR ${totalAmount.toFixed(2)}`;
+        }
+
+        // Handle clear cart
+        clearCartButton.addEventListener("click", function() {
+            cart = []; // Empty the cart
+            localStorage.setItem("cart", JSON.stringify(cart)); // Update localStorage
+            displayCart(); // Re-render the cart
+        });
+
+        // Handle checkout button
+        checkoutButton.addEventListener("click", function() {
+            const total = calculateTotal();
+            const confirmation = confirm(`Your total cost is SAR ${total.toFixed(2)}. Do you want to proceed to checkout?`);
+            if (confirmation) {
+                displayAcknowledgment(total);
+                setTimeout(() => {
+                    window.location.href = "eval.html"; // Redirect to evaluation page
+                }, 3000);
+            } else {
+                alert("Checkout canceled.");
+            }
+        });
+
+        // Calculate total price
+        function calculateTotal() {
+            let total = 0;
+            const items = document.querySelectorAll('.cart-item');
+            items.forEach(item => {
+                const price = parseFloat(item.querySelector('.item-price').textContent.replace('SAR ', ''));
+                const quantity = parseInt(item.querySelector('.quantity').textContent);
+                total += price * quantity;
+            });
+            return total;
+        }
+
+        // Display acknowledgment message
+        function displayAcknowledgment(total) {
+            const acknowledgmentDiv = document.createElement('div');
+            acknowledgmentDiv.style.position = 'fixed';
+            acknowledgmentDiv.style.top = '50%';
+            acknowledgmentDiv.style.left = '50%';
+            acknowledgmentDiv.style.transform = 'translate(-50%, -50%)';
+            acknowledgmentDiv.style.backgroundColor = '#d4edda';
+            acknowledgmentDiv.style.color = '#155724';
+            acknowledgmentDiv.style.padding = '20px';
+            acknowledgmentDiv.style.border = '1px solid #c3e6cb';
+            acknowledgmentDiv.style.borderRadius = '5px';
+            acknowledgmentDiv.style.zIndex = '1000';
+            acknowledgmentDiv.textContent = `Thank you for your purchase! Your order has been successfully completed. Total: SAR ${total.toFixed(2)}`;
+            
+            document.body.appendChild(acknowledgmentDiv);
+            
+            setTimeout(() => {
+                acknowledgmentDiv.remove();
+            }, 3000);
+        }
+
+        // Initial display of cart items
+        displayCart();
+    });
+</script>
+
+</body>
+</html>
