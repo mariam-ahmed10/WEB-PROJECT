@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="StyleSheet.css">
+    <title>QuickTrade</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form");
+            const nameInput = document.getElementById("name");
+            const priceInput = document.getElementById("price");
+            const quantityInput = document.getElementById("quantity");
+            const categorySelect = document.getElementById("category");
+            const descriptionInput = document.getElementById("description");
+            const photoInput = document.querySelector('input[type="file"]');
+    
+            form.addEventListener("submit", function (event) {
+                event.preventDefault(); 
+                
+                let errorMessage = "";
+    
+                const nameValue = nameInput.value.trim();
+                if (!nameValue) {
+                    errorMessage += "Name field is required.\n";
+                } else if (/^\d/.test(nameValue)) {
+                    errorMessage += "Name cannot start with a number.\n";
+                }
+    
+                const priceValue = priceInput.value.trim();
+                if (!priceValue) {
+                    errorMessage += "Price field is required.\n";
+                } else if (isNaN(priceValue) || parseFloat(priceValue) <= 0) {
+                    errorMessage += "Price must be a valid positive number.\n";
+                }
+    
+                const quantityValue = quantityInput.value.trim();
+                if (!quantityValue) {
+                    errorMessage += "Quantity field is required.\n";
+                } else if (!Number.isInteger(Number(quantityValue)) || parseInt(quantityValue) <= 0) {
+                    errorMessage += "Quantity must be a valid positive number.\n";
+                }
+    
+                if (!categorySelect.value) {
+                    errorMessage += "Category selection is required.\n";
+                }
+    
+                const descriptionValue = descriptionInput.value.trim();
+                if (!descriptionValue) {
+                    errorMessage += "Description field is required.\n";
+                }
+    
+                if (errorMessage) {
+                    alert(errorMessage);
+                    return;
+                }
+    
+                const file = photoInput.files[0];
+                if (!file) {
+                    alert("Please upload a product image.");
+                    return;
+                }
+    
+                const reader = new FileReader();
+                reader.onload = function () {
+                    const imageUrl = reader.result;
+    
+                    const product = {
+                        name: nameValue,
+                        price: parseFloat(priceValue).toFixed(2), 
+                        quantity: parseInt(quantityValue),
+                        category: categorySelect.options[categorySelect.selectedIndex].text,
+                        description: descriptionValue,
+                        image: imageUrl, 
+                    };
+    
+                    let products = JSON.parse(localStorage.getItem("products")) || [];
+                    products.push(product);
+                    localStorage.setItem("products", JSON.stringify(products));
+    
+                    
+                    alert(`Product "${product.name}" added successfully!`);
+    
+                 
+                    form.reset();
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+    </script>
+</head>
+<body>
+<header>
+    <div id="sidebar">
+        <img id="logo" src="images/logo.png" alt="quicktrada" width="150">
+        <h1>QUICKTRADA</h1>
+        <a href="cart.html"><img src="images/cart.png" alt="cart icon">cart</a>
+        <a href="Saller.html"><img src="images/seller.png" alt="seller icon">seller</a>
+        <a href="customer.html"><img src="images/customer.png" alt="customer icon">customer</a>
+        <a href="Clothing.html"><img src="images/clothes.png" alt="clothes icon">clothes</a>
+        <a href="Shoes.html"><img src="images/choose.png" alt="shoes icon">Shoes</a>
+        <a href="Watches.html"><img src="images/watch.png" alt="watch icon">watches</a>
+    </div>
+</header>
+
+<div class="breadcrumbs">
+    <span>&gt;</span> <a href="home.html">Home</a> <span>&gt;</span> <a href="Saller.html">Seller</a> <span>&gt;</span> <a href="addpro.html">Add product</a>
+</div>
+
+<div id="fadd" style="display: flex; flex-direction: column; align-items: center; margin: 20px;">
+    <form action="#" method="POST" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>
+                    <div class="image-frame">
+                        <img src="images/add.png" alt="add image" id="addImage">
+                    </div>
+                    <div class="upload-section">
+                        <label>Add Product photo:<input type="file" name="photo"></label>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+       
+        <h2 style="text-align: center;">Product information:</h2>
+        <table id="protable">
+            <tr>
+                <td><label for="name">Name:</label></td>
+                <td><input type="text" id="name" name="name"></td>
+            </tr>
+            <tr>
+                <td><label for="price">Price (SAR):</label></td>
+                <td><input type="text" id="price" name="price"></td>
+            </tr>
+            <tr>
+                <td><label for="quantity">Quantity:</label></td>
+                <td><input type="text" id="quantity" name="quantity"></td>
+            </tr>
+            <tr>
+                <td><label for="category">Category:</label></td>
+                <td>
+                    <select id="category" name="category">
+                        <option value="category1">Clothes</option>
+                        <option value="category2">Shoes</option>
+                        <option value="category3">Watches</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="description">Description:</label></td>
+                <td><textarea id="description" name="description" placeholder="Description"></textarea></td>
+            </tr>
+        </table>
+      
+        <div style="text-align: center;">
+            <input id="sub" type="submit" value="Submit" style="margin-bottom: 30px;">
+        </div>
+    </form>
+</div>
+
+<footer>
+    <img id="last" src="images/contact.png" alt="contact">
+    <h2>Contact Us</h2>
+    <div>
+        <a href="#"><img src="images/email.png" alt="email icon"></a>
+        <a href="#"><img src="images/insta.png" alt="insta icon"></a>
+        <a href="#"><img src="images/snap.png" alt="snap icon"></a>
+    </div>
+    <h4>We're here to help!<br>Reach out to our customer support team for any inquiries,<br> and we'll ensure a smooth and satisfying shopping experience.</h4>
+    <p>&copy; 2024 QuickTrade. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
