@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watches</title>
+    <link rel="stylesheet" href="StyleSheet.css">
+    <style>
+        button.plus-btn,
+        button.minus-btn {
+            background-color: #761d1a;  /* Use the theme color */
+            border: 1px solid #761d1a;
+            color: white;
+            font-size: 16px;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        button.plus-btn:hover,
+        button.minus-btn:hover {
+            background-color: #555; /* Darker shade for hover effect */
+            border-color: #333;
+        }
+        
+        /* Quantity Display */
+        .quantity {
+            font-size: 16px;
+            padding: 0 10px;
+            min-width: 20px;
+            text-align: center;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center; /* Centers the button horizontally */
+            margin-top: 1.25em; /* Adds space above the button */
+            margin-bottom: 1.25em; /* Adds space below the button */
+        }
+        
+        #myCartButton {
+            background-color: #be8a87; /* Matches your theme color */
+            color: #fff; /* White text color for readability */
+            padding: 0.625em 1.25em; /* Adjust padding for a better look */
+            border: none;
+            border-radius: 0.3125em; /* Rounded corners for a soft look */
+            cursor: pointer;
+            transition: background-color 0.3s; /* Smooth hover transition */
+        }
+        
+        #myCartButton:hover {
+            background-color: #761d1a; /* Darker shade on hover to match theme */
+        }
+        
+        </style>
+</head>
+<body>
+   <header>
+    <div id="sidebar"><img id="logo" src="images/logo.png" alt="quicktrada" width="150"><h1>QUICKTRADA</h1>
+        <a href="cart.html"><img src="images/cart.png" alt="cart icon">cart</a>
+        <a href="saller.html"><img src="images/seller.png" alt="seller icon">seller</a>
+        <a href="customer.html"><img src="images/customer.png" alt="customer icon">customer</a>
+        <a href="Clothing.html"><img src="images/clothes.png" alt="clothes icon">clothes</a>
+        <a href="Shoes.html"><img src="images/choose.png" alt="shoes icon">Shoes</a>
+        <a href="Watches.html"><img src="images/watch.png" alt="watch icon">watches</a>
+    </div>
+   </header>
+
+    <main>
+        <div class="breadcrumbs">
+           <span>&gt;</span> <a href="home.html">Home</a><span>&gt;</span> <a href="Watches.html">Watches</a>
+        </div>
+
+        <h1 style="text-align:center">Watches</h1>
+
+        <div class="sort-by">
+            <label for="sorting">Sort by:</label>
+            <select id="sorting">
+                <optgroup label="Price">
+                    <option value="low to high">LOW-HIGH</option>
+                    <option value="high to low">HIGH-LOW</option>
+                </optgroup>
+                <optgroup label="Name">
+                    <option value="a-z">A-Z</option>
+                    <option value="z-a">Z-A</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <div class="product-grid" id="picCategories">
+            <div class="productcat">
+                <input type="checkbox" class="selectProduct" id="product1">
+                <img src="images/w1.jpg" alt="product1">
+                <p>Gold watch</p>
+                <p class="priceCat">700 SAR</p>
+                <div class="quantity-control">
+                    <button class="minus-btn" data-id="1">-</button>
+                    <span class="quantity" id="quantity-1">1</span>
+                    <button class="plus-btn" data-id="1">+</button>
+                </div>
+            </div>
+
+            <div class="productcat">
+                <input type="checkbox" class="selectProduct" id="product2">
+                <img src="images/w2.jpg" alt="product2">
+                <p>Gold watch</p>
+                <p class="priceCat">500 SAR</p>
+                <div class="quantity-control">
+                    <button class="minus-btn" data-id="2">-</button>
+                    <span class="quantity" id="quantity-2">1</span>
+                    <button class="plus-btn" data-id="2">+</button>
+                </div>
+            </div>
+
+            <div class="productcat">
+                <input type="checkbox" class="selectProduct" id="product3">
+                <img src="images/w3.jpg" alt="product3">
+                <p>Silver watch</p>
+                <p class="priceCat">600 SAR</p>
+                <div class="quantity-control">
+                    <button class="minus-btn" data-id="3">-</button>
+                    <span class="quantity" id="quantity-3">1</span>
+                    <button class="plus-btn" data-id="3">+</button>
+                </div>
+            </div>
+
+            <div class="productcat">
+                <input type="checkbox" class="selectProduct" id="product4">
+                <img src="images/w4.jpg" alt="product4">
+                <p>Silver and gold watch</p>
+                <p class="priceCat">800 SAR</p>
+                <div class="quantity-control">
+                    <button class="minus-btn" data-id="4">-</button>
+                    <span class="quantity" id="quantity-4">1</span>
+                    <button class="plus-btn" data-id="4">+</button>
+                </div>
+            </div>
+
+            <div class="productcat">
+                <input type="checkbox" class="selectProduct" id="product5">
+                <img src="images/w5.jpg" alt="product5">
+                <p>Leather watch</p>
+                <p class="priceCat">300 SAR</p>
+                <div class="quantity-control">
+                    <button class="minus-btn" data-id="5">-</button>
+                    <span class="quantity" id="quantity-5">1</span>
+                    <button class="plus-btn" data-id="5">+</button>
+                </div>
+            </div>
+
+            <div class="productcat">
+                <input type="checkbox" class="selectProduct" id="product6">
+                <img src="images/w6.jpg" alt="product6">
+                <p>Gold watch</p>
+                <p class="priceCat">900 SAR</p>
+                <div class="quantity-control">
+                    <button class="minus-btn" data-id="6">-</button>
+                    <span class="quantity" id="quantity-6">1</span>
+                    <button class="plus-btn" data-id="6">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button id="myCartButton">My Cart</button>
+        </div>
+    </main>
+
+    <footer>
+        <img id="last" src="images/contact.png" alt="contact">
+        <h2>contact us </h2>
+        <div>
+            <a href="#"> <img src="images/email.png" alt="email icon"> </a>
+            <a href="#"> <img src="images/insta.png" alt="insta icon"> </a>
+            <a href="#"> <img src="images/snap.png" alt="snap icon"> </a>
+        </div>
+        <h4>We're here to help! Reach out to our customer support team for any inquiries.</h4>
+        <p>&copy; 2024 QuickTrade. All Rights Reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sortSelect = document.getElementById("sorting");
+            const productContainer = document.getElementById("picCategories");
+            const products = Array.from(productContainer.getElementsByClassName("productcat"));
+            const myCartButton = document.getElementById("myCartButton");
+    
+            // Sort Products Function
+            function sortProducts() {
+                const sortOption = sortSelect.value;
+    
+                const sortedProducts = products.slice().sort((a, b) => {
+                    const nameA = a.querySelector("p").textContent.toLowerCase();
+                    const nameB = b.querySelector("p").textContent.toLowerCase();
+                    const priceA = parseFloat(a.querySelector(".priceCat").textContent.replace("$", "").trim());
+                    const priceB = parseFloat(b.querySelector(".priceCat").textContent.replace("$", "").trim());
+    
+                    if (sortOption === "low to high") return priceA - priceB;
+                    if (sortOption === "high to low") return priceB - priceA;
+                    if (sortOption === "a-z") return nameA.localeCompare(nameB);
+                    if (sortOption === "z-a") return nameB.localeCompare(nameA);
+                    return 0; // Default case
+                });
+    
+                productContainer.innerHTML = ""; // Clear and re-append the sorted items
+                sortedProducts.forEach(product => productContainer.appendChild(product));
+            }
+    
+            sortSelect.addEventListener("change", sortProducts);
+    
+            // Quantity Control and Adding to Cart
+            products.forEach(product => {
+                const selectProduct = product.querySelector(".selectProduct");
+                const plusBtn = product.querySelector(".plus-btn");
+                const minusBtn = product.querySelector(".minus-btn");
+                const quantityDisplay = product.querySelector(".quantity");
+                let quantity = parseInt(quantityDisplay.textContent) || 1;
+    
+                // Quantity control logic
+                plusBtn.addEventListener("click", () => {
+                    quantity++;
+                    quantityDisplay.textContent = quantity;
+                });
+    
+                minusBtn.addEventListener("click", () => {
+                    if (quantity > 1) {
+                        quantity--;
+                        quantityDisplay.textContent = quantity;
+                    }
+                });
+    
+                // Reset quantity if checkbox is unchecked
+                selectProduct.addEventListener("change", () => {
+                    if (!selectProduct.checked) {
+                        quantity = 1;
+                        quantityDisplay.textContent = quantity;
+                    }
+                });
+            });
+    
+            // Adding selected products to the cart
+            myCartButton.addEventListener("click", () => {
+                const existingCartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    
+                const newCartItems = products
+                    .filter(product => product.querySelector(".selectProduct").checked)  // Get only selected products
+                    .map(product => ({
+                        name: product.querySelector("p").textContent,
+                        price: parseFloat(product.querySelector(".priceCat").textContent.replace("$", "").trim()),
+                        quantity: parseInt(product.querySelector(".quantity").textContent),
+                        imageSrc: product.querySelector("img").src // Add image URL for the cart
+                    }));
+    
+                if (newCartItems.length === 0) {
+                    alert("Please select at least one product to add to your cart.");
+                    return;
+                }
+    
+                newCartItems.forEach(newItem => {
+                    const existingItem = existingCartItems.find(item => item.name === newItem.name);
+                    if (existingItem) {
+                        existingItem.quantity += newItem.quantity;  // If the item is already in the cart, just increase the quantity
+                    } else {
+                        existingCartItems.push(newItem);  // Otherwise, add the item
+                    }
+                });
+    
+                localStorage.setItem("cart", JSON.stringify(existingCartItems)); // Update cart in localStorage
+                window.location.href = "cart.html";  // Redirect to cart page
+            });
+        });
+    </script>
+    
+
+</body>
+</html>
